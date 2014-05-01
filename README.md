@@ -3,6 +3,11 @@
 When given a path to a picture, this gem attempts to determins whether it contains
 a single face and thus might be appropriate for a profile image, ID Card etc.
 
+It is a modified then gemified version of George Ogata's [find-face](https://github.com/howaboutwe/find-face).
+
+If you want a CLI that indicates where the biggest face in an image is, then use [find-face](https://github.com/howaboutwe/find-face).
+If you want a ruby gem that indicates whether an image contains a single face, use this.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -35,3 +40,6 @@ puts Findaface.has_face?('path/to/my_cat.jpg')
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Thanks
+OpenCV & George Ogata

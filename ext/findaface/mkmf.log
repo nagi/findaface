@@ -1,0 +1,113 @@
+have_library: checking for main() in -lopencv_core... -------------------- yes
+
+"clang -o conftest -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/x86_64-darwin13.0 -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/ruby/backward -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0 -I. -I/Users/nagi/.rbenv/versions/2.1.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/nagi/.rbenv/versions/2.1.0/lib -L. -L/Users/nagi/.rbenv/versions/2.1.0/lib  -fstack-protector     -lruby-static -framework CoreFoundation  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"clang -o conftest -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/x86_64-darwin13.0 -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/ruby/backward -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0 -I. -I/Users/nagi/.rbenv/versions/2.1.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/nagi/.rbenv/versions/2.1.0/lib -L. -L/Users/nagi/.rbenv/versions/2.1.0/lib  -fstack-protector     -lruby-static -framework CoreFoundation -lopencv_core  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for main() in -lopencv_highgui... -------------------- yes
+
+"clang -o conftest -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/x86_64-darwin13.0 -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/ruby/backward -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0 -I. -I/Users/nagi/.rbenv/versions/2.1.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/nagi/.rbenv/versions/2.1.0/lib -L. -L/Users/nagi/.rbenv/versions/2.1.0/lib  -fstack-protector    -lopencv_core  -lruby-static -framework CoreFoundation -lopencv_highgui -lopencv_core  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+/* end */
+
+--------------------
+
+have_library: checking for main() in -lopencv_objdetect... -------------------- yes
+
+"clang -o conftest -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/x86_64-darwin13.0 -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/ruby/backward -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0 -I. -I/Users/nagi/.rbenv/versions/2.1.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe conftest.c  -L. -L/Users/nagi/.rbenv/versions/2.1.0/lib -L. -L/Users/nagi/.rbenv/versions/2.1.0/lib  -fstack-protector    -lopencv_highgui -lopencv_core  -lruby-static -framework CoreFoundation -lopencv_objdetect -lopencv_highgui -lopencv_core  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for opencv2/objdetect/objdetect.hpp... -------------------- yes
+
+"clang -E -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/x86_64-darwin13.0 -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/ruby/backward -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0 -I. -I/Users/nagi/.rbenv/versions/2.1.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <opencv2/objdetect/objdetect.hpp>
+/* end */
+
+--------------------
+
+have_header: checking for opencv2/highgui/highgui.hpp... -------------------- yes
+
+"clang -E -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/x86_64-darwin13.0 -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/ruby/backward -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0 -I. -I/Users/nagi/.rbenv/versions/2.1.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <opencv2/highgui/highgui.hpp>
+/* end */
+
+--------------------
+
+have_header: checking for opencv2/imgproc/imgproc_c.h... -------------------- yes
+
+"clang -E -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/x86_64-darwin13.0 -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0/ruby/backward -I/Users/nagi/.rbenv/versions/2.1.0/include/ruby-2.1.0 -I. -I/Users/nagi/.rbenv/versions/2.1.0/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT    -O3 -Wno-error=shorten-64-to-32  -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <opencv2/imgproc/imgproc_c.h>
+/* end */
+
+--------------------
+
