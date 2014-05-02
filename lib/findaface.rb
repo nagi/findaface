@@ -1,4 +1,5 @@
 require 'findaface/version'
+require 'posix/spawn'
 
 module Findaface
   LIB_PATH = File.dirname(File.expand_path(__FILE__))
@@ -7,6 +8,6 @@ module Findaface
 
   def self.has_face?(path)
     raise "#{path} file does not exist" unless File.exists?(path)
-    system "#{EXECUTABLE} --cascade=#{DEFAULT_CASCADE} #{path} > /dev/null 2>&1"
+    POSIX::Spawn::system "#{EXECUTABLE} --cascade=#{DEFAULT_CASCADE} #{path} > /dev/null 2>&1"
   end
 end
