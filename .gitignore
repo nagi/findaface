@@ -22,3 +22,4 @@ tmp
 mkmf.log
 
 spec/test_photos
+ext/findaface/findaface
