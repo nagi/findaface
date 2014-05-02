@@ -1,10 +1,12 @@
-require "findaface/version"
+require 'findaface/version'
 
 module Findaface
+  LIB_PATH = File.dirname(File.expand_path(__FILE__))
+  EXECUTABLE = File.join(LIB_PATH, '../ext/findaface/findaface')
+  DEFAULT_CASCADE = File.join(LIB_PATH, 'haarcascades/haarcascade_frontalface_alt.xml')
+
   def self.has_face?(path)
-    binary = File.join(File.dirname(File.expand_path(__FILE__)), '../ext/findaface/findaface')
-    cascade = File.join(File.dirname(File.expand_path(__FILE__)),
-                        '../lib/haarcascades/haarcascade_frontalface_alt.xml')
-    system "#{binary} --cascade=#{cascade} #{path} > /dev/null 2>&1"
+    raise "#{path} file does not exist" unless File.exists?(path)
+    system "#{EXECUTABLE} --cascade=#{DEFAULT_CASCADE} #{path} > /dev/null 2>&1"
   end
 end
