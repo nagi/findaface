@@ -1,19 +1,17 @@
 # Findaface
 
-When given a path to a picture, this gem attempts to determins whether it contains
-a single face and thus might be appropriate for a profile image, ID Card etc.
+When given a path to a picture, this gem attempts to determins whether it contains a single face and thus might be appropriate for a profile image, ID Card etc.
 
-It is a modified then gemified version of George Ogata's [find-face](https://github.com/howaboutwe/find-face).
+It is a modified then gemified version of George Ogata's [find-face](https://github.com/howaboutwe/find-face). If you want a CLI that indicates where the biggest face in an image is, then use the original.
 
-If you want a CLI that indicates where the biggest face in an image is, then use [find-face](https://github.com/howaboutwe/find-face).
-If you want a ruby gem that indicates whether an image contains a single face, use this.
+This gem simply compiles an executable to detect a face then calls it externally, so you won't have to include the humongous OpenCV library into your Ruby process, which can cause memory leak / bloat or even crash. This is what [Paperclip](https://github.com/thoughtbot/paperclip) does for ImageMagick. We also support [posix-spawn](https://github.com/rtomayko/posix-spawn) to mitigate the overhead of fork-exec.
 
 ## Installation
 
 There are two steps:
 
 1. Install OpenCV
-2. Install the Findaface gem
+2. Install Findaface
 
 ### Install OpenCV
 
@@ -36,7 +34,7 @@ Linux servers don't have a camera, so you might want to fake the device to suppr
 touch /dev/raw1394
 ```
 
-### Install the Findaface gem
+### Install Findaface
 
 Add this line to your application's Gemfile:
 
