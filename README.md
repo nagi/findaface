@@ -10,17 +10,45 @@ If you want a ruby gem that indicates whether an image contains a single face, u
 
 ## Installation
 
+There are two steps:
+
+1. Install OpenCV
+2. Install the Findaface gem
+
+### Install OpenCV
+
+For Mac:
+
+```sh
+brew tap homebrew/science
+brew install opencv
+```
+
+For Linux (Debian/Ubuntu):
+
+```sh
+apt-get install libopencv-dev
+```
+
+Linux servers don't have a camera, so you might want to fake the device to suppress the warning:
+
+```sh
+touch /dev/raw1394
+```
+
+### Install the Findaface gem
+
 Add this line to your application's Gemfile:
 
-    gem 'findaface'
-
-And then execute:
-
-    $ bundle
+```ruby
+gem 'findaface'
+```
 
 Or install it yourself as:
 
-    $ gem install findaface
+```sh
+$ gem install findaface
+```
 
 ## Usage
 

@@ -23,3 +23,4 @@ mkmf.log
 
 spec/test_photos
 ext/findaface/findaface
+.DS_Store
