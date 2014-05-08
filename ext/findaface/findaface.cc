@@ -71,11 +71,12 @@ int main(int argc, const char** argv)
 
     // This parameter will affect the quality of the detected faces. Higher value results in less
     // detections but with higher quality. 3~6 is a good value for it.
-    int fussyness = 5;
-    cascade.detectMultiScale(small_image, faces, 1.05, fussyness, 0, Size(50, 50));
+    int fussyness = 2;
+    cascade.detectMultiScale(small_image, faces, 1.05, fussyness, 0, Size(80, 80));
 
     std::cout << faces.size() << "\tface(s) found\n";
-    if(faces.size() == 1) {
+
+    if(faces.size() >= 1) {
       return 0;
     } else {
       return 1;
