@@ -14,12 +14,6 @@ describe Findaface, "has_face?" do
     end
   end
 
-  it "returns false for group photos" do
-    Dir['spec/test_photos/many_faces/*'].each do |path|
-      Findaface.has_face?(path).should be_false
-    end
-  end
-
   it "returns false for photos with small faces" do
     Dir['spec/test_photos/small_faces/*'].each do |path|
       Findaface.has_face?(path).should be_false if path == 'spec/test_photos/small_faces/small.jpg'
