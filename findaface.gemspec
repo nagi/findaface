@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Andrew Nagi"]
   spec.email         = ["andrew.nagi@gmail.com"]
   spec.summary       = %q{Finds a face in an image.}
-  spec.description   = %q{This gem attempts to discern whether an image contains a clear picture of a single face. Depends on OpenCV.}
+  spec.description   = %q{This gem attempts to discern whether an image contains any faces. Depends on OpenCV.}
   spec.homepage      = ""
   spec.license       = "MIT"
 

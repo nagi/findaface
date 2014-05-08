@@ -1,7 +1,7 @@
 # Findaface
 
 When given a path to a picture, this gem attempts to determins whether it contains
-faces and thus might be appropriate for a profile image.
+faces and thus might be appropriate for a profile image. It is looking for faces bigger than 80 pixels squared.
 
 It is a modified then gemified version of George Ogata's [find-face](https://github.com/howaboutwe/find-face). If you want a CLI that indicates where the biggest face in an image is, then use the original.
 
