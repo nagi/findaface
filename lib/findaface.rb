@@ -7,6 +7,7 @@ module Findaface
   DEFAULT_CASCADE = {
 			cascade:'haarcascades/haarcascade_frontalface_alt2.xml',
 			fussyness:4,
+			max_size: 512,
 			min_size: 80,
 			scale_factor: 1.05,
 	}
@@ -38,6 +39,7 @@ module Findaface
 		  "--fussyness=#{options[:fussyness]} " +
 		  "--scale_factor=#{options[:scale_factor]} " +
 		  "--min_size=#{options[:min_size]} " +
+		  "--max_size=#{options[:max_size]} " +
 			"#{path} > /dev/null 2>&1"
 	end
 

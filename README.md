@@ -70,6 +70,7 @@ Findaface.add_cascade(
     fussyness:7,
     scale_factor: 1.05,
     min_size: 100,
+    max_size: 512,
 	}
 )
 ```
@@ -80,6 +81,7 @@ Findaface.add_cascade(
 Basically the scale factor is used to create your scale pyramid. More explanation can be found
 [here](https://sites.google.com/site/5kk73gpu2012/assignment/viola-jones-face-detection#TOC-Image-Pyramid).
 * min_size: In pixels. Objects smaller than this size squared are ignored.
+* max_size: Objects bigger than this are ignored.
 
 ### Using multiple cascades
 If you add multiple cascades then they will be applied in turn. If any of the cascades matche, 
@@ -91,6 +93,7 @@ Findaface.add_cascade(
     fussyness:6,
     scale_factor: 1.05,
     min_size: 100,
+    max_size: 512,
 	}
 )
 Findaface.add_cascade(
@@ -99,6 +102,7 @@ Findaface.add_cascade(
     fussyness:6,
     scale_factor: 1.05,
     min_size: 100,
+    max_size: 512,
   }
 )
 

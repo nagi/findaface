@@ -9,7 +9,7 @@
 
 using namespace cv;
 
-#define USAGE "USAGE: findaface --cascade=PATH.xml [--fussyness=integer] [--scale_factor=1.05] [--min_size=pixels] [ --resize=SCALE ] IMAGE"
+#define USAGE "USAGE: findaface --cascade=PATH.xml [--fussyness=integer] [--scale_factor=1.05] [--min_size=pixels] [--max-size=pixels] [ --resize=SCALE ] IMAGE"
 
 int main(int argc, const char** argv)
 {
@@ -24,6 +24,8 @@ int main(int argc, const char** argv)
   std::string scale_factor;
   // The minimum size (in pixels) of a detected feature. High values speed up detection
   std::string min_size;
+  // The maximum size (in pixels) of a detected feature.
+  std::string max_size;
   // Path to image
   std::string input_name;
 
@@ -31,6 +33,7 @@ int main(int argc, const char** argv)
   double scale_factor_number = 1.05;
   double resize_number = 1;
   int min_size_number = 80;
+  int max_size_number = 2048;
 
   CascadeClassifier cascade;
 
@@ -39,6 +42,7 @@ int main(int argc, const char** argv)
   const std::string fussyness_opt = "--fussyness=";
   const std::string scale_factor_opt = "--scale_factor=";
   const std::string min_size_opt = "--min_size=";
+  const std::string max_size_opt = "--max_size=";
   const std::string cascade_opt = "--cascade=";
 
   for (int i = 1; i < argc; i++) {
@@ -57,6 +61,9 @@ int main(int argc, const char** argv)
     } else if (min_size_opt.compare(0, min_size_opt.length(), argv[i], min_size_opt.length()) == 0) {
       min_size.assign(argv[i] + min_size_opt.length());
       min_size_number = atoi(min_size.c_str());
+    } else if (max_size_opt.compare(0, max_size_opt.length(), argv[i], max_size_opt.length()) == 0) {
+      max_size.assign(argv[i] + max_size_opt.length());
+      max_size_number = atoi(max_size.c_str());
     } else if (help_opt == argv[i]) {
       std::cout << USAGE << std::endl;
       return 0;
@@ -90,6 +97,11 @@ int main(int argc, const char** argv)
     return -1;
   }
 
+  if (max_size_number < 0 || max_size_number <= min_size_number) {
+    std::cerr << "ERROR: max_size must be positive integer bigger than min_size" << std::endl;
+    return -1;
+  }
+
   if (scale_factor_number <= 1 || scale_factor_number >= 1.5) {
     std::cerr << "ERROR: scale_factor should be around 1.05 (5%)" << std::endl;
     return -1;
@@ -110,7 +122,8 @@ int main(int argc, const char** argv)
 
     std::vector<Rect> faces;
 
-    cascade.detectMultiScale(small_image, faces, scale_factor_number, fussyness_number, 0, Size(min_size_number, min_size_number));
+    cascade.detectMultiScale(small_image, faces, scale_factor_number, fussyness_number, 0,
+				Size(min_size_number, min_size_number), Size(max_size_number, max_size_number));
 
     std::cout << faces.size() << "\tface(s) found\n";
     if(faces.size() >= 1) {
