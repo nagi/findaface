@@ -60,6 +60,54 @@ puts Findaface.has_face?('path/to/my_cat.jpg')
 => false
 ```
 
+### Customizing the casscade
+Those who need to detect something other than a face can use a different cascade.
+
+```
+Findaface.add_cascade(
+  {
+    cascade:'haarcascades/haarcascade_upperbody.xml',
+    fussyness:7,
+    scale_factor: 1.05,
+    min_size: 100,
+	}
+)
+```
+
+* cascade: A trained classifiers for detecting objects of a particular type
+* fussyness: How good a match is required.
+* scale_factor: Parameter specifying how much the image size is reduced at each image scale.
+Basically the scale factor is used to create your scale pyramid. More explanation can be found
+[here](https://sites.google.com/site/5kk73gpu2012/assignment/viola-jones-face-detection#TOC-Image-Pyramid).
+* min_size: In pixels. Objects smaller than this size squared are ignored.
+
+### Using multiple cascades
+If you add multiple cascades then they will be applied in turn. If any of the cascades matche, 
+findaface returns true.
+```
+Findaface.add_cascade(
+  {
+    cascade:'haarcascades/haarcascade_mcs_nose.xml',
+    fussyness:6,
+    scale_factor: 1.05,
+    min_size: 100,
+	}
+)
+Findaface.add_cascade(
+  {
+    cascade:'haarcascades/haarcascade_eye.xml',
+    fussyness:6,
+    scale_factor: 1.05,
+    min_size: 100,
+  }
+)
+
+puts Findaface.has_face?('path/to/nose_or_eye.jpg')
+=> true
+puts Findaface.has_face?('path/to/mouth.jpg')
+=> false
+```
+
 ## Contributing
 
 1. Fork it ( http://github.com/<my-github-username>/findaface/fork )
