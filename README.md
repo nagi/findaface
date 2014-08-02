@@ -1,11 +1,10 @@
 # Findaface
 
-When given a path to a picture, this gem attempts to determins whether it contains
-faces and thus might be appropriate for a profile image. It is looking for faces bigger than 80 pixels squared.
+When given a path to a picture, this gem attempts to determins whether it contains any faces and thus might be appropriate for a profile image. It is looking for faces bigger than 80 pixels squared.
 
 It is a modified then gemified version of George Ogata's [find-face](https://github.com/howaboutwe/find-face). If you want a CLI that indicates where the biggest face in an image is, then use the original.
 
-This gem simply compiles an executable to detect a face then calls it externally, so you won't have to include the humongous OpenCV library into your Ruby process, which can cause memory leak / bloat or even crash. This is what [Paperclip](https://github.com/thoughtbot/paperclip) does for ImageMagick. We also support [posix-spawn](https://github.com/rtomayko/posix-spawn) to mitigate the overhead of fork-exec.
+This gem simply compiles an executable to detect a face then calls it externally, so you won't have to include the humongous OpenCV library into your Ruby process, which can cause a memory leaks / bloat or even a crash. This is what [Paperclip](https://github.com/thoughtbot/paperclip) does for ImageMagick. We also support [posix-spawn](https://github.com/rtomayko/posix-spawn) to mitigate the overhead of fork-exec.
 
 ## Installation
 
@@ -52,11 +51,11 @@ $ gem install findaface
 ## Usage
 
 ```
-puts Findaface.has_face?('path/to/me.jpg')
+puts Findaface.new.has_face?('path/to/me.jpg')
 => true
-puts Findaface.has_face?('path/to/me_in_a_group.jpg')
-=> false
-puts Findaface.has_face?('path/to/my_cat.jpg')
+puts Findaface.new.has_face?('path/to/me_in_a_group.jpg')
+=> true
+puts Findaface.new.has_face?('path/to/my_cat.jpg')
 => false
 ```
 
@@ -84,10 +83,10 @@ Basically the scale factor is used to create your scale pyramid. More explanatio
 * max_size: Objects bigger than this are ignored.
 
 ### Using multiple cascades
-If you add multiple cascades then they will be applied in turn. If any of the cascades matche, 
-findaface returns true.
+If you add multiple cascades then they will be applied in turn. If any of the cascades match, then findaface returns true. You should add cascades before the first call to `has_face?` (unless you also want the default cascade to be applied).
 ```
-Findaface.add_cascade(
+findaface = Findaface.new
+findaface.add_cascade(
   {
     cascade:'haarcascades/haarcascade_mcs_nose.xml',
     fussyness:6,
@@ -96,7 +95,7 @@ Findaface.add_cascade(
     max_size: 512,
 	}
 )
-Findaface.add_cascade(
+findaface.add_cascade(
   {
     cascade:'haarcascades/haarcascade_eye.xml',
     fussyness:6,
@@ -106,9 +105,11 @@ Findaface.add_cascade(
   }
 )
 
-puts Findaface.has_face?('path/to/nose_or_eye.jpg')
+puts findaface.has_face?('path/to/nose.jpg')
 => true
-puts Findaface.has_face?('path/to/mouth.jpg')
+puts findaface.has_face?('path/to/eye.jpg')
+=> true
+puts findaface.has_face?('path/to/mouth.jpg')
 => false
 ```
 

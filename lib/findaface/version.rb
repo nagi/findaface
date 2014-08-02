@@ -1,3 +1,3 @@
-module Findaface
+class Findaface
   VERSION = '0.0.6'
 end
